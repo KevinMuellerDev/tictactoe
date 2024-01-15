@@ -21,6 +21,22 @@ function init() {
     render();
 }
 
+function restartGame(){
+    fields = [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+    ];
+    render();
+}
+
+
 function render() {
     const container = document.getElementById('container');
     let tableHTML = '<table>';
@@ -106,6 +122,7 @@ function drawWinningLine(combination) {
     const endCell = document.querySelectorAll(`td`)[combination[2]];
     const startRect = startCell.getBoundingClientRect();
     const endRect = endCell.getBoundingClientRect();
+    const contentRect = document.getElementById('container').getBoundingClientRect();
 
     const lineLength = Math.sqrt(
         Math.pow(endRect.left - startRect.left, 2) + Math.pow(endRect.top - startRect.top, 2)
@@ -117,10 +134,10 @@ function drawWinningLine(combination) {
     line.style.width = `${lineLength}px`;
     line.style.height = `${lineWidth}px`;
     line.style.backgroundColor = lineColor;
-    line.style.top = `${startRect.top + startRect.height / 2 - lineWidth / 2} px`;
-    line.style.left = `${startRect.left + startRect.width / 2} px`;
+    line.style.top = `${startRect.top + startRect.height / 2 - lineWidth / 2 - contentRect.top}px`;
+    line.style.left = `${startRect.left + startRect.width / 2 - contentRect.left}px`;
     line.style.transform = `rotate(${lineAngle}rad)`;
-    line.style.transformOrigin = 'top left';
+    line.style.transformOrigin = `top left`;
     document.getElementById('container').appendChild(line);
 }
 

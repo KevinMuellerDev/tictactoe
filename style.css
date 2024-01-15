@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
     color: white;
     position: relative;
 }
@@ -65,4 +65,30 @@ table tr:last-child td {
 
 table tr td:last-child {
     border-right: 0;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mt-32 {
+    margin-top: 32px;
+}
+
+button {
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    color: #fff;
+    background-color: #00B0EF;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #96cadd;
 }
