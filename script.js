@@ -24,7 +24,7 @@ function render() {
         for (let j = 0; j < 3; j++) {
             const index = i * 3 + j;
 
-            tableHTML += '<td>';
+            tableHTML += `<td onclick="handleClick(${index})">`;
             if (fields[index] === 'cross') {
                 tableHTML += generateAnimatedCross();
             } else if (fields[index] === 'circle') {
@@ -72,4 +72,16 @@ function generateAnimatedCross() {
     `;
 
     return svgHtml;
+}
+
+function handleClick(index) {
+    const currentPlayer = fields.filter(item => item !== null).length % 2 === 0 ? 'cross' : 'circle';
+
+    if (!fields[index]) {
+        fields[index] = currentPlayer;
+
+        const tdElement = document.querySelectorAll('td')[index];
+        tdElement.innerHTML = currentPlayer === 'cross' ? generateAnimatedCross() : generateAnimatedCircle();
+        tdElement.onclick = null;  // Remove the onclick function after a move
+    }
 }
